@@ -1,0 +1,73 @@
+<div id="feed">
+    <div class="title">
+        <h2>Meu time</h2>
+    </div>
+    <div class="text">
+        <p *ngIf="statusTeam ==='countries'" >Seu Time é de qual País ?</p>
+        <p *ngIf="statusTeam ==='leagues'" >Qual liga você quer deseja?</p>
+        <p *ngIf="statusTeam ==='seasons'" >Deseja analisar qual temporada?</p>
+    </div>
+
+    <div class="container" *ngIf="statusTeam ==='countries'">
+        <div class="group" *ngFor="let item of arrayCountries">
+            <div class="item" [id]="item.name"  (click)="chooseCountrie($event)">
+                <p>{{item.name}}</p>
+                <img [src]="item.flag" [alt]="item.name"> 
+            </div>
+        </div>
+    </div>
+
+    <div class="container" *ngIf="statusTeam ==='leagues'">
+        <div class="group" *ngFor="let item of arrayLeagues">
+            <div class="item" [id]="item.league.id" (click)="chooseLeague($event)">
+                <p>{{item.league.name}}</p>
+                <img [src]="item.league.logo" [alt]="item.league.name">
+            </div>
+        </div>
+    </div>
+   
+    <div class="container" *ngIf="statusTeam ==='seasons'">
+        <div class="group" *ngFor="let item of arraySeasons; let i = index">
+            <div class="text" [id]="item" (click)="chooseSeason($event)">
+                <p>{{item}}</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container" *ngIf="statusTeam ==='teams'">
+        <div class="group" *ngFor="let item of arrayTeams; let i = index">
+            <div class="text" [id]="item.team.id" (click)="chooseTeam($event)">
+                <p>{{item.team.name}}</p>
+                <img [src]="item.team.logo" [alt]="item.team.name">
+            </div>
+        </div>
+    </div>
+    
+    <div class="container-players" *ngIf="statusTeam ==='players'">
+
+        <h3>Jogares do Elenco</h3>
+        <div class="container-elenco">
+            <div class="group-players" *ngFor="let item of arrayPlayers; let i = index">
+                <div class="text-players" [id]="item.player.id">
+                    <img [src]="item.player.photo" [alt]="item.player.name">
+                    <p>Nome: {{item.player.name}}</p>
+                    <p>Idade: {{item.player.age}}</p>
+                    <p>Nacionalidade: {{item.player.nationality}}</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+    <footer>
+        <div id="footer-text">
+            <p>Contrução de Projeto com API-Football</p>
+            <p>Desenvolvedor Front End - Patrick Machado</p>
+        </div>
+    </footer>
+
+
+</div>

@@ -1,0 +1,30 @@
+<section id="login">
+    <div id="box-login">
+        <div class="slice-input">
+            <label for="text-key">Digite seu Acess-Key </label>
+            <input type="text" name="key" id="text-key" [(ngModel)]="acessKey">
+        </div>
+        <div class="slice-submit">
+            <button (click)="check()">Entrar</button>
+        </div>
+    </div>
+
+    <div id="back"></div>
+    <div id="information" (click)="changeInfo()">
+        <fa-icon [icon]="infoIcon"></fa-icon>
+    </div>
+
+    <div id="alert" *ngIf="errorAuthentication">
+        <p>Verifique se seu acess-key está correto!</p>
+    </div>
+    <div id="alert" *ngIf="inputValid">
+        <p>Que tal preencher certinho?</p>
+    </div>
+
+    <div id="text-info" *ngIf="statusInfo">
+        <p>
+            Obtenha a acess-key criando uma conta na <a href="https://www.api-football.com/" target="_blank">API-Football</a>, na sua conta obterá seu acess-key. Portando, use seu acess-key para entrar no login desta página.
+        </p>
+    </div>
+</section>
+
